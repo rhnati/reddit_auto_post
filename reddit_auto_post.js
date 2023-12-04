@@ -4,7 +4,7 @@ const clientId = "LLLaFpRNu8BqnFUVDPsvmw";
 const clientSecret = "PYx5Pchx8cpOci-7UwKBerz47yNE4A";
 const username = "SportScoreio";
 const password = "Aa1234567!@a";
-const subreddit = "SportScoreIO";
+const subreddit = "SportScoreio";
 
 const postedMatches = new Set();
 
@@ -98,7 +98,7 @@ async function postToReddit(postText) {
       text: postText,
     };
 
-    await axios.post(`https://oauth.reddit.com/r/${subreddit}/submit`, null, {
+    await axios.post(`https://oauth.reddit.com/u/${subreddit}/submit`, null, {
       params: postParams,
       headers: {
         Authorization: `bearer ${accessToken}`,
