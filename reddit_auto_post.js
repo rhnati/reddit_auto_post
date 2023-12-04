@@ -96,9 +96,10 @@ async function postToReddit(postText) {
       title: "Match started!",
       kind: "self",
       text: postText,
+      sr: subreddit,
     };
 
-    await axios.post(`https://oauth.reddit.com/u/${subreddit}/submit`, null, {
+    await axios.post(`https://oauth.reddit.com/api/submit`, null, {
       params: postParams,
       headers: {
         Authorization: `bearer ${accessToken}`,
