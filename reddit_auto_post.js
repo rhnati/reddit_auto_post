@@ -98,7 +98,7 @@ async function postToReddit(postText) {
       text: postText,
     };
 
-    await axios.post(`https://oauth.reddit.com/r/${subreddit}/submit`, null, {
+    await axios.post(`https://oauth.reddit.com/u/${subreddit}/submit`, null, {
       params: postParams,
       headers: {
         Authorization: `bearer ${accessToken}`,
