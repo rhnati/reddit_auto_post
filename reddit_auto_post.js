@@ -2,9 +2,9 @@ import axios from "axios";
 
 const clientId = "LLLaFpRNu8BqnFUVDPsvmw";
 const clientSecret = "PYx5Pchx8cpOci-7UwKBerz47yNE4A";
-const username = "SportScoreio";
+const username = "SportScore-Poster";
 const password = "Aa1234567!@a";
-const subreddit = "SportScoreIO";
+const subreddit = "SportScoreioCommunity";
 
 const postedMatches = new Set();
 
