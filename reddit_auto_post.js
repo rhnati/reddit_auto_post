@@ -45,30 +45,33 @@ function processData(matchGroups) {
 
 async function getMatch(matchGroup) {
   try {
-      const competition = matchGroup.competition.name;
+    const competition = matchGroup.competition.name;
 
-      matchGroup.matches.forEach(match => {
-          const matchId = match.id;
+    matchGroup.matches.forEach((match) => {
+      const matchId = match.id;
 
-          if (!postedMatches.has(matchId)) {
-              const homeTeam = match.home_team.name;
-              const awayTeam = match.away_team.name;
-              const league = competition;
-              const matchLink = match.url;
-              const venueName = match.venue ? match.venue.name : '';
+      if (!postedMatches.has(matchId)) {
+        const homeTeam = match.home_team.name;
+        const awayTeam = match.away_team.name;
+        const league = competition;
+        const matchLink = match.url;
+        const venueName = match.venue ? match.venue.name : "";
 
-              let postContent = `🎌 Match Started! 🎌\n\n`;
-              postContent += `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
-              postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
-              postContent += `Venue: ${venueName}\n\n`;
+        let postContent = `🎌 Match Started! 🎌\n\n`;
+        postContent += `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
+        postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
+        postContent += `Venue: ${venueName}\n\n`;
 
-              postToReddit(postContent);
+        // Introduce a delay of 1 minute before posting
+        setTimeout(() => {
+          postToReddit(postContent);
+        }, 60000);
 
-              postedMatches.add(matchId);
-          }
-      });
+        postedMatches.add(matchId);
+      }
+    });
   } catch (error) {
-      console.error('Error getting match:', error.message);
+    console.error("Error getting match:", error.message);
   }
 }
 
