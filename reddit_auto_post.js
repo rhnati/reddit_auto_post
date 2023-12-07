@@ -77,7 +77,7 @@ async function getMatch(matchGroup) {
   }
 }
 
-async function postToReddit(postText) {
+async function postToReddit(postText, imageUrl) {
   try {
     const authResponse = await axios.post(
       "https://www.reddit.com/api/v1/access_token",
@@ -97,11 +97,31 @@ async function postToReddit(postText) {
 
     const accessToken = authResponse.data.access_token;
 
+    const uploadResponse = await axios.post(
+      "https://oauth.reddit.com/api/upload_sr_img",
+      {
+        file: imageUrl,
+        name: "image",
+        r: subreddit,
+        upload_type: "img",
+      },
+      {
+        headers: {
+          Authorization: `bearer ${accessToken}`,
+          "User-Agent": "SportScore-Poster/1.0",
+        },
+      }
+    );
+
+    const imageUploadUrl = uploadResponse.data.data.url_overridden_by_dest;
+
     const postParams = {
       title: "Match started!",
-      kind: "self",
+      kind: "link",
       text: postText,
       sr: subreddit,
+      url: imageUrl,
+      thumbnail: imageUploadUrl,
     };
 
     await axios.post(`https://oauth.reddit.com/api/submit`, null, {
@@ -117,6 +137,7 @@ async function postToReddit(postText) {
     console.error("Error posting to Reddit:", error.response.data);
   }
 }
+
 
 setInterval(fetchData, 60000);
 
