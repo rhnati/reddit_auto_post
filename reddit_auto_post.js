@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const clientId = "LLLaFpRNu8BqnFUVDPsvmw";
-const clientSecret = "PYx5Pchx8cpOci-7UwKBerz47yNE4A";
+const clientId = "W2C-XDbfL3zVZqlBdluhZw";
+const clientSecret = "1shb0VdRYKLH_-zX4fwctmCdSDpZHg";
 const username = "SportScore-Poster";
 const password = "Aa1234567!@a";
 const subreddit = "SportScoreioCommunity";
