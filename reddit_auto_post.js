@@ -107,7 +107,7 @@ async function postToReddit(postText) {
       params: postParams,
       headers: {
         Authorization: `bearer ${accessToken}`,
-        "User-Agent": "SportScoreIO/1.0",
+        "User-Agent": "SportScore-Poster/1.0",
       },
     });
 
