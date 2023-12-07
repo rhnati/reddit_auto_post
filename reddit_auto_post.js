@@ -59,7 +59,8 @@ async function getMatch(matchGroup) {
         const hashtags = `#${homeTeam.replace(/\s+/g, '')} #${awayTeam.replace(/\s+/g, '')} #${league.replace(/\s+/g, '')}`;
 
         let postContent = `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
-        postContent += `![Watch Now on SportScore]( ${matchLink} "Watch Live Football")\n\n`;
+        postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
+        postContent += `![](${matchLink})\n\n`;
         postContent += `${hashtags}\n\n`;
 
         // Introduce a delay of 1 minute before posting
