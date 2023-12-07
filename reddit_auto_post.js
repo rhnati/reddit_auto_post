@@ -7,6 +7,7 @@ const password = "Aa1234567!@a";
 const subreddit = "SportScoreioCommunity";
 
 const postedMatches = new Set();
+let matchIndex = 0;
 
 function fetchData() {
   fetch(
@@ -55,19 +56,19 @@ async function getMatch(matchGroup) {
         const awayTeam = match.away_team.name;
         const league = competition;
         const matchLink = match.url;
-        const venueName = match.venue ? match.venue.name : "";
+        const hashtags = `#${homeTeam.replace(/\s+/g, '')} #${awayTeam.replace(/\s+/g, '')} #${league.replace(/\s+/g, '')}`;
 
-        let postContent = `🎌 Match Started! 🎌\n\n`;
-        postContent += `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
+        let postContent = `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
         postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
-        postContent += `Venue: ${venueName}\n\n`;
+        postContent += `${hashtags}\n\n`;
 
         // Introduce a delay of 1 minute before posting
         setTimeout(() => {
           postToReddit(postContent);
-        }, 60000);
+        }, matchIndex * 60000);
 
         postedMatches.add(matchId);
+        matchIndex++;
       }
     });
   } catch (error) {
