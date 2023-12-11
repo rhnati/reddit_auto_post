@@ -61,9 +61,12 @@ async function getMatch(matchGroup) {
         let postContent = `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
         postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
 
-        hashtags.split(' ').forEach((tag) => {
-          postContent += `[${tag}](https://www.reddit.com/r/${subreddit}/search?q=%23${tag}&restrict_sr=on&sort=new) `;
-        });
+        const formattedHashtags = hashtags
+          .split(' ')
+          .map((tag) => `[${tag}](https://www.reddit.com/r/${subreddit}/search?q=%23${tag}&restrict_sr=on&sort=new)`)
+          .join(' ');
+
+        postContent += `${formattedHashtags}\n\n`;
         
         // Introduce a delay of 1 minute before posting
         setTimeout(() => {
