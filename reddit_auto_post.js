@@ -60,12 +60,11 @@ async function getMatch(matchGroup) {
 
         let postContent = `💥⚽️💥 ${homeTeam} vs ${awayTeam} League: ${league} 💥⚽️💥\n\n`;
         postContent += `Watch Now on SportScore: ${matchLink}\n\n`;
-        postContent += `![](${matchLink})\n\n`;
         postContent += `${hashtags}\n\n`;
 
         // Introduce a delay of 1 minute before posting
         setTimeout(() => {
-          postToReddit(postContent);
+          postToReddit(postContent, matchLink);
         }, matchIndex * 60000);
 
         postedMatches.add(matchId);
@@ -100,7 +99,7 @@ async function postToReddit(postText) {
     const postParams = {
       title: "Match started!",
       kind: "link",
-      text: postText,
+      url: imageUrl,
       sr: subreddit,
     };
 
