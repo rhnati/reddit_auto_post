@@ -99,7 +99,7 @@ async function postToReddit(postText) {
 
     const postParams = {
       title: "Match started!",
-      kind: "self",
+      kind: "link",
       text: postText,
       sr: subreddit,
     };
