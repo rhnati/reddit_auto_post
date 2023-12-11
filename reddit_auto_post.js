@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const clientId = "W2C-XDbfL3zVZqlBdluhZw";
-const clientSecret = "1shb0VdRYKLH_-zX4fwctmCdSDpZHg";
-const username = "SportScore-Poster";
+const clientId = "LLLaFpRNu8BqnFUVDPsvmw";
+const clientSecret = "PYx5Pchx8cpOci-7UwKBerz47yNE4A";
+const username = "SportScoreio";
 const password = "Aa1234567!@a";
 const subreddit = "SportScoreioCommunity";
 
@@ -63,7 +63,7 @@ async function getMatch(matchGroup) {
 
         const formattedHashtags = hashtags
           .split(' ')
-          .map((tag) => `[${tag}](https://www.reddit.com/r/${subreddit}/search/?q=${encodeURIComponent(tag)}&restrict_sr=on&sort=new)`)
+          .map((tag) => `[${tag}](https://www.reddit.com/u/${username}/search/?q=${encodeURIComponent(tag)}&restrict_sr=on&sort=new)`)
           .join(' ');
 
         postContent += `${formattedHashtags}\n\n`;
@@ -107,7 +107,6 @@ async function postToReddit(postText, imageUrl) {
       kind: "link",
       text: postText,
       url: imageUrl,
-      sr: subreddit,
     };
 
     await axios.post(`https://oauth.reddit.com/api/submit`, null, {
