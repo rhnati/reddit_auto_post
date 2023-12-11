@@ -76,7 +76,7 @@ async function getMatch(matchGroup) {
   }
 }
 
-async function postToReddit(postText) {
+async function postToReddit(postText, imageUrl) {
   try {
     const authResponse = await axios.post(
       "https://www.reddit.com/api/v1/access_token",
@@ -99,6 +99,7 @@ async function postToReddit(postText) {
     const postParams = {
       title: "Match started!",
       kind: "link",
+      text: postText,
       url: imageUrl,
       sr: subreddit,
     };
