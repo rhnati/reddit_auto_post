@@ -107,6 +107,7 @@ async function postToReddit(postText, imageUrl) {
       kind: "link",
       text: postText,
       url: imageUrl,
+      sr: subreddit,
     };
 
     await axios.post(`https://oauth.reddit.com/api/submit`, null, {
