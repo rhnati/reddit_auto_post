@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const clientId = "LLLaFpRNu8BqnFUVDPsvmw";
-const clientSecret = "PYx5Pchx8cpOci-7UwKBerz47yNE4A";
-const username = "SportScoreio";
+const clientId = "p31nvYJp-qebca_QX3lrjw";
+const clientSecret = "K2EB0sspXU2ZJO9uTs4H9uamA7UtPg";
+const username = "SportScore_io";
 const password = "Aa1234567!@a";
-const subreddit = "SportScoreioCommunity";
+const subreddit = "SportScore_io";
 
 const postedMatches = new Set();
 let matchIndex = 0;
